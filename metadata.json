@@ -1,0 +1,6 @@
+{
+  "name": "HyperPulse",
+  "description": "All-in-one hardware telemetry booster, system monitor, clean engine, and game performance optimizer with Shizuku integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

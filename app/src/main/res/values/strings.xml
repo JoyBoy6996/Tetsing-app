@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">HyperPulse</string>
+    <string name="app_tagline">Performance Booster &amp; System Monitor</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_clean">Clean</string>
+    <string name="nav_monitor">Monitor</string>
+    <string name="nav_tools">Tools</string>
+    <string name="nav_game">Game Booster</string>
+    <string name="nav_shizuku">Shizuku Hub</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_health_score">System Health</string>
+    <string name="dashboard_health_optimal">Optimal</string>
+    <string name="dashboard_health_good">Good</string>
+    <string name="dashboard_health_warning">Attention Needed</string>
+    <string name="dashboard_health_critical">Critical Load</string>
+    <string name="action_quick_boost">ONE-TAP BOOST</string>
+    <string name="action_boosting">Optimizing System…</string>
+    <string name="boost_success">Boost Complete: Cleaned %1$s RAM, refreshed cache</string>
+
+    <!-- Telemetry Cards -->
+    <string name="telemetry_cpu">CPU Usage</string>
+    <string name="telemetry_ram">RAM Used</string>
+    <string name="telemetry_storage">Storage Free</string>
+    <string name="telemetry_battery">Battery</string>
+    <string name="telemetry_network">Network</string>
+    <string name="telemetry_thermal">Device Temp</string>
+
+    <!-- Game Booster -->
+    <string name="game_booster_title">Game Booster</string>
+    <string name="game_mode_balanced">Balanced</string>
+    <string name="game_mode_performance">Performance</string>
+    <string name="game_mode_turbo">Turbo</string>
+    <string name="game_mode_turbo_plus">Turbo++</string>
+    <string name="game_mode_battery">Battery Gaming</string>
+    <string name="game_mode_custom">Custom</string>
+    <string name="game_launch_with_boost">Launch with Booster</string>
+    <string name="game_library">Gaming Library</string>
+    <string name="add_game">Add Game</string>
+    <string name="overlay_toggle">In-Game Floating Overlay</string>
+    <string name="overlay_desc">Show real-time FPS, CPU, RAM, &amp; Temp over games</string>
+
+    <!-- Cleaner -->
+    <string name="cleaner_title">Junk Cleaner</string>
+    <string name="cleaner_scan_now">Scan Junk Files</string>
+    <string name="cleaner_scanning">Scanning cache &amp; temp files…</string>
+    <string name="cleaner_clean_now">Clean Selected (%1$s)</string>
+    <string name="category_cache">App System Cache</string>
+    <string name="category_temp">Temporary &amp; Log Files</string>
+    <string name="category_apk">APK Leftovers</string>
+    <string name="category_thumbnails">Thumbnail Cache</string>
+    <string name="category_empty_folders">Empty Folders</string>
+
+    <!-- Tools -->
+    <string name="tool_ram_booster">RAM Booster</string>
+    <string name="tool_cpu_monitor">CPU Core Monitor</string>
+    <string name="tool_device_cooler">Device Cooler</string>
+    <string name="tool_battery_optimizer">Battery Optimizer</string>
+    <string name="tool_storage_analyzer">Storage Analyzer</string>
+    <string name="tool_app_manager">App Manager</string>
+    <string name="tool_network_speed">Network &amp; Ping Test</string>
+    <string name="tool_sensor_monitor">Sensor Diagnostics</string>
+    <string name="tool_device_info">Device Specs &amp; SoC</string>
+    <string name="tool_display_tester">Display &amp; Refresh Rate</string>
+    <string name="tool_benchmark">System Benchmark</string>
+    <string name="tool_privacy_advisor">Privacy Advisor</string>
+
+    <!-- Shizuku Hub -->
+    <string name="shizuku_hub_title">Shizuku &amp; Root Hub</string>
+    <string name="shizuku_status_ready">Shizuku Service Connected</string>
+    <string name="shizuku_status_not_running">Shizuku Not Running</string>
+    <string name="shizuku_status_not_installed">Shizuku Not Installed</string>
+    <string name="shizuku_status_need_permission">Permission Required</string>
+    <string name="shizuku_shell_mode">ADB Shell Mode (UID 2000)</string>
+    <string name="shizuku_root_mode">Root Superuser (UID 0)</string>
+    <string name="shizuku_revert_all">Revert All Tweaks</string>
+
+    <!-- General -->
+    <string name="settings_title">Settings</string>
+    <string name="theme_dark">Dark Mode</string>
+    <string name="theme_amoled">AMOLED Deep Black</string>
+    <string name="notification_service">Persistent Monitor Notification</string>
+    <string name="permission_rationale">Permissions are required to inspect hardware metrics and manage background processes safely.</string>
+</resources>
