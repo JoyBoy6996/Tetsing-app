@@ -12,7 +12,7 @@
         android:supportsRtl="true">
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.antutu.ABenchMark.MainActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:exported="true"
             android:excludeFromRecents="false">
@@ -23,7 +23,7 @@
         </activity>
 
         <service
-            android:name=".PerformanceService"
+            android:name="com.antutu.ABenchMark.PerformanceService"
             android:exported="false"
             android:stopWithTask="false"
             android:foregroundServiceType="specialUse">

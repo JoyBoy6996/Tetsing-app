@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    namespace = "com.joyboy.performanceoverlay"
+    namespace = "com.antutu.ABenchMark"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.joyboy.performanceoverlay"
+        applicationId = "com.antutu.ABenchMark"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
+        versionCode = 17
         versionName = "1.0"
     }
 

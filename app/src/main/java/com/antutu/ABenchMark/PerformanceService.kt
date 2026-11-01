@@ -1,4 +1,4 @@
-package com.joyboy.performanceoverlay
+package com.antutu.ABenchMark
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -39,7 +39,7 @@ class PerformanceService : Service() {
     companion object {
         private const val CHANNEL_ID = "performance_overlay_service_channel"
         private const val NOTIFICATION_ID = 1001
-        private const val ACTION_STOP = "com.joyboy.performanceoverlay.ACTION_STOP"
+        private const val ACTION_STOP = "com.antutu.ABenchMark.ACTION_STOP"
         private const val HEARTBEAT_INTERVAL_MS = 3_000L
 
         fun stop(context: Context) {

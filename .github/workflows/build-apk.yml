@@ -26,6 +26,16 @@ jobs:
       - name: Build Debug APK with Gradle
         run: ./gradlew assembleDebug --stacktrace
 
+      - name: Verify APK Package and Components
+        run: |
+          APK_PATH=$(ls app/build/outputs/apk/debug/*.apk | head -n 1)
+          AAPT=$(find $ANDROID_HOME/build-tools -name aapt | sort -V | tail -n 1)
+          echo "Using AAPT at: $AAPT"
+          echo "=== APK Badging ==="
+          "$AAPT" dump badging "$APK_PATH"
+          echo "=== Manifest Components ==="
+          "$AAPT" dump xmltree "$APK_PATH" AndroidManifest.xml | grep -E "(E: activity|E: service|A: android:name)"
+
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
         with:
