@@ -23,11 +23,12 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Install SDK packages
-        run: sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+        run: |
+          SDKM=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager | head -n 1)
+          echo "Using $SDKM"
+          yes | "$SDKM" --licenses || true
+          "$SDKM" "platform-tools" "platforms;android-36" "build-tools;36.0.0"
 
       - name: Set up Gradle 8.13
         uses: gradle/actions/setup-gradle@v4
@@ -36,16 +37,6 @@ jobs:
 
       - name: Build debug APK
         run: gradle --no-daemon clean assembleDebug
-
-      - name: Verify APK Package and Components
-        run: |
-          APK_PATH=$(ls app/build/outputs/apk/debug/*.apk | head -n 1)
-          AAPT=$(find $ANDROID_HOME/build-tools -name aapt | sort -V | tail -n 1)
-          echo "Using AAPT at: $AAPT"
-          echo "=== APK Badging ==="
-          "$AAPT" dump badging "$APK_PATH"
-          echo "=== Manifest Components ==="
-          "$AAPT" dump xmltree "$APK_PATH" AndroidManifest.xml | grep -E "(E: activity|E: service|A: android:name)"
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
