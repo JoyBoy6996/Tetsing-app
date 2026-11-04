@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">forcehz</string>
+    <string name="force_rate">Force %1$d Hz</string>
+    <string name="reset_default">Reset to system default</string>
+    <string name="rms_connected">Vivo RMS service: connected</string>
+    <string name="rms_unavailable">Vivo RMS service: unavailable on this firmware</string>
+    <string name="pinned_status">Saved selection: %1$d Hz</string>
+    <string name="default_status">No forcehz vote saved. System default is in control.</string>
+    <string name="vote_submitted">Submitted %1$d Hz request to Vivo RMS.</string>
+    <string name="vote_failed">Could not submit the request. Check RMS service availability.</string>
+    <string name="default_restored">Released forcehz votes. System policy can select the refresh rate.</string>
+    <string name="reset_failed">Could not release the votes. Check RMS service availability.</string>
+    <string name="footer">No root or Shizuku required for the global refresh-rate vote.\nActual refresh rate remains controlled by Vivo display policy.</string>
+</resources>

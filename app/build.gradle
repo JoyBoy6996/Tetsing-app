@@ -1,0 +1,32 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.joyboy.forcehz'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'com.joyboy.forcehz'
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName '1.0.0'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ''
+        }
+        release {
+            minifyEnabled false
+            // GitHub Actions currently builds a debug APK by default.
+            // Configure signing separately if you later need a distributable release APK.
+        }
+    }
+}

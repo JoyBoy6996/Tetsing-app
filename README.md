@@ -1,30 +1,53 @@
-# Performance Overlay Replica
+# forcehz
 
-A Kotlin Android Studio starter replica based on static inspection of the supplied APK.
+A minimal Vivo / iQOO refresh-rate controller with four fixed requests:
 
-## Included behaviour
+- 60 Hz
+- 90 Hz
+- 120 Hz
+- 144 Hz
+- Reset to system default
 
-- Overlay permission check
-- Battery-optimization exemption request
-- Android 13+ notification permission request
-- Foreground `PerformanceService`
-- Transparent, hardware-accelerated 1x1 overlay view
-- 3-second heartbeat invalidation loop
-- Notification with a Stop action
-- Service startup is delayed by **10,000 ms** after permissions are granted (replacing the original 500 ms callback)
-- Launcher activity closes after **5,000 ms** once the service starts
+## Build with GitHub Actions
 
-## Build
+1. Create a GitHub repository.
+2. Upload the contents of this project to the repository root.
+3. Push to `main` (or `master`), or open **Actions → Build forcehz APK → Run workflow**.
+4. Open the completed workflow run.
+5. Download the `forcehz-debug-apk` artifact.
 
-1. Open this folder in Android Studio.
-2. Allow Gradle sync to complete.
-3. Select **Build > Build Bundle(s) / APK(s) > Build APK(s)**.
-4. Install the generated debug APK.
+The workflow builds `app/build/outputs/apk/debug/app-debug.apk`. This project ZIP intentionally does not contain a prebuilt APK.
 
-## Important fidelity notes
+## Implementation
 
-The supplied APK is compiled Kotlin bytecode, not an original source project. Static inspection confirms the package `com.antutu.ABenchMark`, `MainActivity`, `PerformanceService`, permission flow, overlay attachment, and 3-second heartbeat. The source here reproduces that architecture but is not a byte-for-byte decompilation.
+The global refresh-rate request uses Vivo's `rms` Binder service:
 
-The original APK's inspected activity callbacks include a 500 ms startup callback and a 200 ms lifecycle callback. This replica changes the startup callback to 10,000 ms. Separately, the launcher activity closes 5,000 ms after service startup; that is a different timer and remains unchanged.
+- `ServiceManager.getService("rms")`
+- transaction 31: `acquireRefreshRate V2`
+- transaction 24: release vote
+- transaction 26: read active refresh rate
 
-The original overlay is created as a plain transparent Android `View`; this project uses a 1x1 transparent view as a safe starting approximation. If you want a visually exact overlay, provide a screenshot of the overlay while active.
+The request payload follows the published implementation in
+[AndroPlus-org/vivo-HighRefresh-NoRoot](https://github.com/AndroPlus-org/vivo-HighRefresh-NoRoot).
+The app does not use root, Shizuku, Accessibility, or `WRITE_SETTINGS` for the global vote.
+
+The selected rate is stored locally and reapplied on `BOOT_COMPLETED`. Reset releases both handles used by forcehz and removes the saved selection.
+
+## Important limitations
+
+- This targets Vivo firmware that exposes the compatible `rms` Binder interface. It is not a generic Android refresh-rate API.
+- A successful one-way Binder transaction means the request was accepted for delivery; it does not prove the display is currently running at that rate.
+- Vivo firmware, thermal policy, app-specific policy, and supported display modes may override the request.
+- The current rate shown by the app is read from the vendor RMS service.
+- After installing, open the app once. Enable the app's Auto-start permission in Vivo/iQOO settings if the firmware restricts boot receivers.
+
+## Project details
+
+- App label: `forcehz`
+- Application ID: `com.joyboy.forcehz`
+- Minimum Android: 10 (API 29)
+- Compile SDK: 36
+- Target SDK: 34
+- Java: 17
+- Gradle: 8.13
+- Android Gradle Plugin: 8.13.2
